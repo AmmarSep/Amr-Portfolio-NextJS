@@ -15,10 +15,7 @@ import {
   SiGitlab,
   SiBitbucket,
   SiIntellijidea,
-  SiEclipseide,
   SiVisualstudiocode,
-  SiMaven,
-  SiGradle,
   SiJira,
   SiBootstrap,
 } from "react-icons/si";
@@ -43,10 +40,7 @@ const skills: SkillType[] = [
   { name: "GitLab", Icon: SiGitlab },
   { name: "Bitbucket", Icon: SiBitbucket },
   { name: "IntelliJ IDEA", Icon: SiIntellijidea },
-  { name: "Eclipse", Icon: SiEclipseide },
   { name: "VS Code", Icon: SiVisualstudiocode },
-  { name: "Maven", Icon: SiMaven },
-  { name: "Gradle", Icon: SiGradle },
   { name: "Jira", Icon: SiJira },
 ];
 

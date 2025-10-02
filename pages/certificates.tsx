@@ -182,7 +182,7 @@ export async function getStaticProps() {
         const orgDetails = getOrgDetails(file);
 
         return {
-          id: index + 1,
+          id: String(index + 1),
           title: formatCertificateName(file),
           url: `/CG Certificates_2024/${encodeURIComponent(file)}`,
           orgName: orgDetails.orgName,
