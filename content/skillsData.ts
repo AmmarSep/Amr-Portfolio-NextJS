@@ -4,7 +4,7 @@ import {
   SiCss3,
   SiJavascript,
   SiReact,
-  SiJava,
+  SiOpenjdk,
   SiSpring,
   SiMysql,
   SiMongodb,
@@ -24,11 +24,11 @@ import {
 } from "react-icons/si";
 
 const skills: SkillType[] = [
-  { name: "Java", Icon: SiJava },
+  { name: "Java", Icon: SiOpenjdk },
   { name: "Spring (Boot)", Icon: SiSpring },
-  { name: "REST APIs", Icon: SiJava },
+  { name: "REST APIs", Icon: SiOpenjdk },
   { name: "Microservices", Icon: SiSpring },
-  { name: "JSP", Icon: SiJava },
+  { name: "JSP", Icon: SiOpenjdk },
   { name: "JavaScript", Icon: SiJavascript },
   { name: "ReactJS", Icon: SiReact },
   { name: "HTML", Icon: SiHtml5 },
