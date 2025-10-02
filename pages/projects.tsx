@@ -5,7 +5,7 @@ import PageTop from "@components/PageTop";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { FadeContainer } from "@content/FramerMotionVariants";
 import pageMeta from "@content/meta";
-import { getProjects } from "@lib/supabase";
+import { projects as staticProjects } from "@content/projectsData";
 import { ProjectType } from "@lib/types";
 import CreateAnIssue from "@components/CreateAnIssue";
 
@@ -51,11 +51,10 @@ export default function Projects({
 }
 
 export async function getStaticProps() {
-  const { projects, error } = await getProjects();
   return {
     props: {
-      projects,
-      error,
+      projects: staticProjects,
+      error: false,
     },
   };
 }

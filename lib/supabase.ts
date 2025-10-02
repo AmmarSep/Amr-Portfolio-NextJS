@@ -1,43 +1,60 @@
 import { createClient } from "@supabase/supabase-js";
 
 // A Supabase client object for making requests to a Supabase server.
+// Using placeholder values if env variables are not set
 export const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_KEY!
+  process.env.SUPABASE_URL || "https://placeholder.supabase.co",
+  process.env.SUPABASE_KEY || "placeholder-key"
 );
 
 /**
  * Asynchronously fetches all projects from the database where the 'pinned' column is set to true.
  * The results are sorted by the 'created_at' column in descending order.
+ * Returns empty array if Supabase is not configured.
  */
 export async function getProjects() {
-  let { data: projects, error } = await supabase
-    .from("projects")
-    .select("*")
-    .eq("pinned", "true")
-    .order("created_at", { ascending: false });
+  try {
+    let { data: projects, error } = await supabase
+      .from("projects")
+      .select("*")
+      .eq("pinned", "true")
+      .order("created_at", { ascending: false });
 
-  return {
-    projects,
-    error: error !== null,
-  };
+    return {
+      projects: projects || [],
+      error: error !== null,
+    };
+  } catch (e) {
+    return {
+      projects: [],
+      error: false,
+    };
+  }
 }
 
 /**
  * Asynchronously fetches all certificates from the database where the 'pinned' column is set to true.
  * The results are sorted by the 'created_at' column in descending order.
+ * Returns empty array if Supabase is not configured.
  */
 export async function getCertificates() {
-  let { data: certificates, error } = await supabase
-    .from("certificates")
-    .select("*")
-    .eq("pinned", "true")
-    .order("created_at", { ascending: false });
+  try {
+    let { data: certificates, error } = await supabase
+      .from("certificates")
+      .select("*")
+      .eq("pinned", "true")
+      .order("created_at", { ascending: false });
 
-  return {
-    certificates,
-    error: error !== null,
-  };
+    return {
+      certificates: certificates || [],
+      error: error !== null,
+    };
+  } catch (e) {
+    return {
+      certificates: [],
+      error: false,
+    };
+  }
 }
 
 /**
