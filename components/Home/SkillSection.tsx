@@ -1,17 +1,23 @@
 import { FadeContainer, popUp } from "../../content/FramerMotionVariants";
-import { HomeHeading } from "../../pages";
 import { motion } from "framer-motion";
 import { useDarkMode } from "@context/darkModeContext";
 import * as WindowsAnimation from "@lib/windowsAnimation";
 import skills from "@content/skillsData";
 import React from "react";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import { headingFromLeft } from "@content/FramerMotionVariants";
 
 export default function SkillSection() {
   const { isDarkMode } = useDarkMode();
 
   return (
     <section className="mx-5">
-      <HomeHeading title="My Top Skills" />
+      <AnimatedHeading
+        className="w-full my-2 text-2xl sm:text-3xl font-bold text-left font-inter"
+        variants={headingFromLeft}
+      >
+        My Top Skills
+      </AnimatedHeading>
 
       <motion.div
         initial="hidden"
@@ -37,7 +43,7 @@ export default function SkillSection() {
             >
               <div className="relative transition pointer-events-none select-none group-hover:scale-110 sm:group-hover:scale-100">
                 {/* @ts-ignore */}
-                <Icon className="w-8 h-8" />
+                {Icon ? <Icon className="w-8 h-8" /> : <span className="w-8 h-8" />}
               </div>
               <p className="hidden text-sm font-semibold pointer-events-none select-none sm:inline-flex md:text-base">
                 {skill.name}

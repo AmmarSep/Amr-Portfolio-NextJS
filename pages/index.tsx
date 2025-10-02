@@ -29,8 +29,8 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
   return (
     <>
       <Metadata
-        title="Jatin Sharma"
-        description={pageMeta.home.description}
+        title="Ammar S S"
+        description={"Full Stack Software Engineer specializing in Java, Spring Boot, Microservices, APIs, and modern web development."}
         previewImage={pageMeta.home.image}
         keywords={pageMeta.home.keywords}
       />
@@ -68,20 +68,20 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
                   variants={opacityVariant}
                   className="text-5xl font-bold lg:text-6xl font-sarina"
                 >
-                  Jatin Sharma
+                  Ammar S S
                 </motion.h1>
                 <motion.p
                   variants={opacityVariant}
                   className="font-medium text-xs md:text-sm lg:text-lg text-[#383838] dark:text-gray-200"
                 >
-                  Technical Lead{" "}
+                  Full Stack Software Engineer at{" "}
                   <Link
-                    href="https://www.linkedin.com/company/konnectnxt/"
+                    href="https://www.capgemini.com/"
                     target="_blank"
                     className="hover:underline"
                     rel="noopener noreferrer"
                   >
-                    @KonnectNXT
+                    Capgemini
                   </Link>
                 </motion.p>
               </div>
@@ -90,12 +90,12 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
                 variants={opacityVariant}
                 className=" text-[#474747] dark:text-gray-300 font-medium text-sm md:text-base text-center"
               >
-                Turning Web Dreams into Reality, Just Like Tony Stark's Vision
+                Results-oriented IT professional specializing in Java development, APIs and microservices with Spring Boot, JSP, and JavaScript; also experienced in HTML, CSS and Bootstrap.
               </motion.p>
             </div>
 
             <Link
-              href="https://bit.ly/j471nCV"
+              href="/Ammar%20s%20s.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2 transition-transform border border-gray-500 rounded-md outline-none select-none dark:border-gray-400 hover:bg-white dark:hover:bg-neutral-800 active:scale-95"
@@ -107,9 +107,115 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
         </motion.section>
 
         <div>
+          {/* About Me */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            variants={FadeContainer}
+            viewport={{ once: true }}
+            className="px-5 py-4"
+          >
+            <HomeHeading title="About Me" />
+            <p className="mt-2 text-sm md:text-base text-[#474747] dark:text-gray-300">
+              I am a results-oriented IT professional with extensive experience in Java development. I specialize in developing APIs, integrating microservices, and working with frameworks like Spring Boot, JSP, and JavaScript for efficient and scalable solutions. I also have expertise in HTML, CSS and Bootstrap.
+            </p>
+          </motion.section>
+
+          {/* Professional Experience */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            variants={FadeContainer}
+            viewport={{ once: true }}
+            className="px-5 py-4"
+          >
+            <HomeHeading title="Professional Experience" />
+            <ul className="mt-4 space-y-4 text-sm md:text-base">
+              <li>
+                <p className="font-semibold">Capgemini <span className="font-normal">— Feb 2022 – Present</span></p>
+                <ul className="list-disc ml-6 mt-1 space-y-1">
+                  <li>Leveraged Liferay portal development for interactive, user‑friendly web applications.</li>
+                  <li>Utilized JavaScript, AJAX, JSP and other frontend technologies to build dynamic UIs.</li>
+                  <li>Proficient with IDEs like VS Code, IntelliJ IDEA, Eclipse, and STS to optimize development workflows.</li>
+                </ul>
+              </li>
+              <li>
+                <p className="font-semibold">Accenture <span className="font-normal">— Aug 2021 – Feb 2022</span></p>
+                <ul className="list-disc ml-6 mt-1 space-y-1">
+                  <li>Developed Java‑based applications leveraging frameworks like Spring Boot for rapid, efficient delivery.</li>
+                </ul>
+              </li>
+              <li>
+                <p className="font-semibold">Asta Systech <span className="font-normal">— Dec 2019 – July 2021</span></p>
+                <ul className="list-disc ml-6 mt-1 space-y-1">
+                  <li>Debugged Java projects across frontend and backend, using IDE debugging tools and techniques.</li>
+                  <li>Managed project tasks and workflows with Jira, ensuring timely completion of deliverables.</li>
+                </ul>
+              </li>
+              <li>
+                <p className="font-semibold">Non‑IT (3 years) <span className="font-normal">— Nov 2015 – Dec 2019</span></p>
+                <ul className="list-disc ml-6 mt-1 space-y-1">
+                  <li>Used AutoCAD and Revit for designing and drafting mechanical/electrical systems with industry standards.</li>
+                  <li>Created drawings, layouts, and schematics for HVAC, plumbing, drainage, fire‑fighting equipment, and safety systems.</li>
+                </ul>
+              </li>
+            </ul>
+          </motion.section>
+
+          {/* Education */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            variants={FadeContainer}
+            viewport={{ once: true }}
+            className="px-5 py-4"
+          >
+            <HomeHeading title="Education Background" />
+            <ul className="mt-4 space-y-2 text-sm md:text-base">
+              <li>
+                <p className="font-semibold">National Engineering College — Bachelor of Engineering</p>
+                <p className="text-xs md:text-sm opacity-80">Completed in 2015</p>
+              </li>
+              <li>
+                <p className="font-semibold">Rosemary Matric Higher Secondary School — Higher Secondary</p>
+                <p className="text-xs md:text-sm opacity-80">Completed in 2011</p>
+              </li>
+              <li>
+                <p className="font-semibold">Don Bosco Matric Higher Secondary School — Primary Schooling</p>
+                <p className="text-xs md:text-sm opacity-80">Completed in 2009</p>
+              </li>
+              <li>
+                <p className="font-semibold">Pursuing MCA (Distance) — Tamilnadu Open University</p>
+                <p className="text-xs md:text-sm opacity-80">Passed 1st year; scheduled to complete in 2025</p>
+              </li>
+            </ul>
+          </motion.section>
+
+          {/* Tech Stack */}
           <SkillSection />
+
+          {/* Blogs */}
           <BlogsSection blogs={blogs} />
           {/* <InstagramSection /> */}
+
+          {/* Contact Details */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            variants={FadeContainer}
+            viewport={{ once: true }}
+            className="px-5 py-4"
+          >
+            <HomeHeading title="Contact" />
+            <ul className="mt-3 text-sm md:text-base space-y-1">
+              <li>Email: <a className="underline" href="mailto:s.s.ammar@outlook.com">s.s.ammar@outlook.com</a></li>
+              <li>Phone: <a className="underline" href="tel:+919751883398">+91 9751883398</a></li>
+              <li>Location: Whitefield, Bangalore</li>
+              <li>Portfolio: <Link className="underline" href="/" rel="noopener noreferrer">Visit Portfolio</Link></li>
+            </ul>
+          </motion.section>
+
+          {/* Contact Form */}
           <Contact />
         </div>
       </div>

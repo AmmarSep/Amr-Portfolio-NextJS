@@ -1,4 +1,4 @@
-import { BlogPost, ISnippet } from "./interface/sanity";
+import { BlogPost, ISnippet, IStaticPage } from "./interface/sanity";
 
 import groq from "groq";
 import matter from "gray-matter";
@@ -6,7 +6,7 @@ import readTime from "reading-time";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
-import sanityClient from "@lib/sanityClient";
+import sanityClient, { isSanityConfigured } from "@lib/sanityClient";
 import { serialize } from "next-mdx-remote/serialize";
 
 const prettyCodeOptions = {
@@ -28,6 +28,8 @@ const prettyCodeOptions = {
 };
 
 export async function getAllPostsMeta(limit?: number): Promise<BlogPost[]> {
+  if (!isSanityConfigured) return [];
+
   const query = groq`*[_type == "post"] | order(publishedAt desc)${
     limit ? `[0..${limit - 1}]` : ""
   } {
@@ -52,6 +54,8 @@ export async function getAllPostsMeta(limit?: number): Promise<BlogPost[]> {
 }
 
 export async function getAllSnippetsMeta(limit?: number): Promise<ISnippet[]> {
+  if (!isSanityConfigured) return [];
+
   const query = groq`*[_type == "snippet"] | order(publishedAt desc)${
     limit ? `[0..${limit - 1}]` : ""
   } {
@@ -72,6 +76,8 @@ export async function getAllSlugs({
 }: {
   type: "post" | "snippet";
 }): Promise<string[]> {
+  if (!isSanityConfigured) return [];
+
   const query = groq`*[_type == "${type}"] | order(publishedAt desc) {
     slug {
       current
@@ -86,6 +92,8 @@ export async function getAllSlugs({
 }
 
 export async function getPostFromSlug(slug: string) {
+  if (!isSanityConfigured) return null as any;
+
   const query = groq`*[_type == "post" && slug.current == "${slug}"][0] {
     _id,
     title,
@@ -107,21 +115,24 @@ export async function getPostFromSlug(slug: string) {
   }`;
 
   const post = await sanityClient.fetch(query);
+  if (!post) return null as any;
 
-  const source = post.content;
+  const source = post.content ?? "";
   const { content } = matter(source);
   const readingTime = readTime(content);
 
   const tableOfContents = getTableOfContents(content);
   const mdxSource = await getMarkdownSource(content);
 
-  post["content"] = mdxSource;
-  post["tableOfContents"] = tableOfContents;
-  post["readingTime"] = readingTime;
+  (post as any)["content"] = mdxSource;
+  (post as any)["tableOfContents"] = tableOfContents;
+  (post as any)["readingTime"] = readingTime;
 
   return post;
 }
 export async function getSnippetFromSlug(slug: string) {
+  if (!isSanityConfigured) return null as any;
+
   const query = groq`*[_type == "snippet" && slug.current == "${slug}"][0] {
     _id,
     title,
@@ -133,22 +144,45 @@ export async function getSnippetFromSlug(slug: string) {
   }`;
 
   const post = await sanityClient.fetch(query);
+  if (!post) return null as any;
 
-  const source = post.content;
+  const source = post.content ?? "";
   const { content } = matter(source);
   const readingTime = readTime(content);
 
   const tableOfContents = getTableOfContents(content);
   const mdxSource = await getMarkdownSource(content);
 
-  post["content"] = mdxSource;
-  post["tableOfContents"] = tableOfContents;
-  post["readingTime"] = readingTime;
+  (post as any)["content"] = mdxSource;
+  (post as any)["tableOfContents"] = tableOfContents;
+  (post as any)["readingTime"] = readingTime;
 
   return post;
 }
 
 export async function getStaticPageFromSlug(slug: string) {
+  if (!isSanityConfigured) {
+    const mdxSource = await getMarkdownSource(" ");
+    const fallback: IStaticPage = {
+      _id: `static-${slug}`,
+      title: slug.charAt(0).toUpperCase() + slug.slice(1),
+      slug: { current: slug },
+      keywords: "",
+      excerpt: "",
+      mainImage: {
+        asset: {
+          _ref: "",
+          _type: "reference",
+          url: "https://i.imgur.com/Kpzk2LQ.png",
+        },
+      },
+      publishedAt: new Date().toISOString(),
+      content: mdxSource,
+    } as any;
+
+    return fallback as any;
+  }
+
   const query = groq`*[_type == "static_page" && slug.current == "${slug}"][0] {
     _id,
     title,
@@ -166,13 +200,14 @@ export async function getStaticPageFromSlug(slug: string) {
   }`;
 
   const post = await sanityClient.fetch(query);
+  if (!post) return null as any;
 
-  const source = post.content;
+  const source = post.content ?? "";
   const { content } = matter(source);
 
   const mdxSource = await getMarkdownSource(content);
 
-  post["content"] = mdxSource;
+  (post as any)["content"] = mdxSource;
   return post;
 }
 

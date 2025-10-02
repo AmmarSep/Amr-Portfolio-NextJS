@@ -39,7 +39,7 @@ export default function MetaData({
   return (
     <NextSeo
       title={title + (suffix ? ` - ${suffix}` : "")}
-      description={description || "Jatin Sharma"}
+      description={description || "Ammar S S"}
       canonical={currentURL}
       additionalLinkTags={[
         {
@@ -62,10 +62,10 @@ export default function MetaData({
         title: title + (suffix ? ` - ${suffix}` : ""),
         description: description || "Jatin Sharma",
         profile: {
-          firstName: "Jatin",
-          lastName: "Sharma",
+          firstName: "Ammar",
+          lastName: "S S",
           gender: "Male",
-          username: "j471n",
+          username: "ammar",
         },
         article: {
           tags: keywords?.split(","),

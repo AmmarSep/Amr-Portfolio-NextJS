@@ -12,7 +12,7 @@ export function getAuthorData(org: string | null = null): AuthorInfo {
   switch (org) {
     case "documatic":
       return {
-        name: "Jatin Sharma",
+        name: "Ammar S S",
         image: homeProfileImage,
         org: "Documatic",
         org_logo: "https://i.imgur.com/ZqBFtg1.png",
@@ -21,7 +21,7 @@ export function getAuthorData(org: string | null = null): AuthorInfo {
 
     default:
       return {
-        name: "Jatin Sharma",
+        name: "Ammar S S",
         image: homeProfileImage,
         org: null,
         org_logo: null,

@@ -1,12 +1,18 @@
 import Blog from "../Blog";
 import { BlogPost } from "@lib/interface/sanity";
-import { HomeHeading } from "../../pages";
 import Link from "next/link";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import { headingFromLeft } from "@content/FramerMotionVariants";
 
 export default function BlogsSection({ blogs }: { blogs: BlogPost[] }) {
   return (
     <section className="mx-5 mb-5">
-      <HomeHeading title="Recent Articles" />
+      <AnimatedHeading
+        className="w-full my-2 text-2xl sm:text-3xl font-bold text-left font-inter"
+        variants={headingFromLeft}
+      >
+        Recent Articles
+      </AnimatedHeading>
 
       <div className="grid grid-cols-1 gap-4 mx-auto">
         {blogs.map((blog, index) => {

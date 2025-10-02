@@ -95,7 +95,7 @@ export default function TopNavbar() {
             }}
             className="font-sarina"
           >
-            Jatin Sharma
+            Ammar S S
           </motion.p>
         </div>
       </Link>

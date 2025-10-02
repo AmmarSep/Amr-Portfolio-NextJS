@@ -244,6 +244,8 @@ To get `EMAIL_VALIDATION_API` follow the following steps to get the `API_KEY` to
 
 ### Sanity Integration
 
+Note: If you don't want to set up Sanity right away, the app will still run locally. Blog and Snippet pages will simply render with no content, and About/Privacy will use a minimal placeholder. To enable full content, configure the variable below.
+
 - `SANITY_PROJECT_ID`:
 
   - Go to the [Sanity.io](<(https://www.sanity.io/)>) website using your web browser.

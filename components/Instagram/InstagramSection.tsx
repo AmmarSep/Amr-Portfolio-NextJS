@@ -1,4 +1,5 @@
-import { HomeHeading } from "pages";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import { headingFromLeft } from "@content/FramerMotionVariants";
 import { InstagramData } from "@lib/interface";
 import InstagramPost from "./InstagramPost";
 import InstagramPostLoading from "./InstagramPostLoading";
@@ -15,7 +16,12 @@ export default function InstagramSection() {
   );
   return (
     <section className="mx-5 mb-5">
-      <HomeHeading title="Recent Instagram Posts" />
+      <AnimatedHeading
+        className="w-full my-2 text-2xl sm:text-3xl font-bold text-left font-inter"
+        variants={headingFromLeft}
+      >
+        Recent Instagram Posts
+      </AnimatedHeading>
 
       <div className="grid grid-cols-1 gap-4 mx-auto mt-5">
         <div className="grid grid-cols-3 gap-0.5">
