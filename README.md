@@ -14,7 +14,6 @@
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Content**: [MDX](https://github.com/mdx-js/mdx)
-
 - **Database**: [Supabase](https://supabase.com/)
 - **Animations**: [Framer Motion](https://framer.com/motion)
 - **Deployment**: [Vercel](https://vercel.com)
